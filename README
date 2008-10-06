@@ -1,4 +1,8 @@
-Judgie runs on Ruby on Rails, so first you need to get Rails running. Go download rails (http://rubyonrails.org/down) and follow it's instructions to get Rails running.  The directions in this README file assume some knowledge of Rails.
+Judgie is a simple, fun opinion polling application which demonstrates the use of many Rails plugins, including Ultrasphinx (for search), GoogleChartsOnRails (interaction with Google Charts API), and Recaptcha.  Many standard plugins, including restful_authentication, will_paginate, and exception_notification are also used.
+
+Judgie is not a plugin or an add-on to your existing Rails application.  It is being open-sourced as a demo application, meant to be used as a learning tool by people wanting to see the above plugins in action.
+
+Judgie runs on Ruby on Rails, so first you need to get Rails running. Go download rails (http://rubyonrails.org/down) and follow it's instructions to get Rails running.  The directions in this README file assume basic knowledge of Rails.
 
 
 Detailed Instructions:
