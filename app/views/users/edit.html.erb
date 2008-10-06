@@ -1,0 +1,17 @@
+<h2>
+	Modify your
+	<%= link_to_function "Profile", "Element.hide('change_password'); 
+									 Element.show('change_settings');" %> |
+	<%= link_to_function "Password", "Element.hide('change_settings'); 
+									  Element.show('change_password');" %>
+</h2>
+
+<br/>
+
+<div id="change_settings">
+	<%= render :partial => 'users/edit' %>
+</div>
+
+<div id="change_password" style="display: none;">
+	<%= render :partial => 'passwords/edit' %>
+</div>

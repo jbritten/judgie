@@ -1,0 +1,10 @@
+<% if @questions.empty? %>
+	<h1>We couldn't find any questions that matched your search.</h1>
+<% else %>
+	<div style="margin-bottom: 10px; border-bottom: 2px dotted #83988E; padding: 5px;">
+		<h1>Search results for "<%= @query %>"</h1>
+	</div>
+	
+	<%= render :partial => 'questions/question', :collection => @questions %>
+	<%= will_paginate @questions %>
+<% end %>

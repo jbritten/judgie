@@ -1,0 +1,96 @@
+<%= error_messages_for :user %>
+
+<% if REQUIRE_INVITE_TO_SIGNUP %>
+	<div style="background-color: #E6F9BC; margin: 5px 0px; padding: 5px">
+		<h2>Wait!  Do you have an invitation code?</h2>
+		<p>
+			We're limiting the number of new accounts while we work to put the finishing touches on Judgie.  We hope to be done any day now.  In the meantime, you'll need an invitation code to sign up.
+		</p>
+		<p>
+			If you already have and invitation code, you'll be asked for it when you create your new account.  If you don't have one, you can request one now and we'll send you one as soon as a slot opens.
+		</p>
+		<div id="request_invite" style="text-align: center;">
+			<p>
+				<%= link_to_function 'Yes, I need an invitation code!', "Element.show('request_invite_form');" %>
+			</p>
+			<div id="request_invite_form" style="display: none;">
+				<div class="form_container">
+					<% form_remote_for(:beta_invitation, :url => beta_invitations_path) do |f| %>
+						<fieldset>
+							<div class="form_row">
+								<label for="email">What's your email?</label><br/>
+								<%= f.text_field :email %>
+							</div>
+
+							<div class="submit_row">
+								<%= submit_tag "Request Invitation", :class => "submit" %>
+							</div>
+						</fieldset>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br/>
+<% end %>
+
+<div class="form_container">
+	<% form_for :user, :url => users_path do |f| -%>
+		<fieldset>
+			<div class="form_row">
+				<label for="login">Pick a username</label>
+				<%= f.text_field :login %>
+			</div>
+
+			<div class="form_row">
+				<label for="email">What's your email?</label>
+				<%= f.text_field :email %>
+			</div>
+
+			<div class="form_row">
+				<label for="password">Pick a password</label>
+				<%= f.password_field :password %>
+			</div>
+
+			<div class="form_row">
+				<label for="password_confirmation">Retype the password</label>
+				<%= f.password_field :password_confirmation %>
+			</div>
+
+			<div class="form_row">
+				<label for="gender">You are a</label>
+				<%= f.select(:gender, User::GENDER) %>
+				<div class="subtext">We ask for this information so that we may graph responses by gender.</div>
+			</div>
+
+			<div class="form_row">
+				<label for="birthdate">Your birthday is</label>
+				<%= select_month(1, :field_name => "birth_month") %> 
+				<%= select_day(1, :field_name => "birth_day") %> 
+				<%= select_year(Date.today, :start_year => Date.today.year-12, :end_year => Date.today.year-100, :field_name => "birth_year") %>
+				<div class="subtext">We ask for this information so that we may graph responses by age group.</div>
+			</div>
+
+			<% if REQUIRE_INVITE_TO_SIGNUP %>
+				<div class="form_row">
+					<label for="invitation_code" class="field_required">Invitation Code:</label>
+					<%= text_field_tag 'invitation_code', nil, :size => '32' %><br/>
+				</div>
+			<% end %>
+	
+			<div class="form_row">
+				<label for="captcha">Prove you are human</label>
+				<%= recaptcha_tags %>
+			</div>
+				
+			<div class="form_row">
+				<%= f.check_box :terms_of_use_and_privacy_policy, :class => "checkbox" %>
+				<label for="terms" class="checkbox">I have read and agree to the <%= link_to('Terms of Use', terms_path, :target => '_blank') %> and <%= link_to('Privacy Policy', privacy_path, :target => '_blank') %></label>
+			</div>
+
+			<div class="submit_row">
+				<%= submit_tag 'Sign up', :class => "submit" %> <%= link_to "Cancel", home_path %>
+			</div>
+		</fieldset>
+	<% end -%>
+</div>

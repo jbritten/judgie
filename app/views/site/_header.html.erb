@@ -1,0 +1,11 @@
+<div style="float:right; text-align: right; font-size: 0.9em;">
+	<% is_home = current_page?(home_path) ? true : false %>
+	<%= link_to "Show me all questions", home_path unless is_home %>
+	<% if not logged_in? %>
+		<% if not is_home %>
+			<span style="padding: 0px 5px;">|</span>
+		<% end %>
+		<%= link_to "What's Judgie all about?", about_path %>
+	<% end %>
+</div>
+<%#= link_to image_tag('logo.gif', :style => "position: absolute", :border => 0, :size => '117x50'), home_path %>

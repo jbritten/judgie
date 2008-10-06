@@ -1,0 +1,13 @@
+<div style="margin-bottom: 10px; border-bottom: 2px dotted #83988E; padding: 5px;">
+	<h1><%= "#{@user.login}" %> is wondering ... </h1>
+</div>
+
+<% if @user.questions.empty? %>
+	<h2>Nothing!<br/><br/><%=h "#{@user.login} hasn't asked any questions." %></h2>		
+<% else %>
+	<%= render :partial => 'questions/question', :collection => @questions %>
+
+	<%= will_paginate @questions %>
+<% end %>
+
+

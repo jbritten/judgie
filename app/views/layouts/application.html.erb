@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="en-us" />
+	<title>Judgie</title>
+	<%= stylesheet_link_tag "style" %>
+	<%= javascript_include_tag(:all, :cache => true) %>
+</head>
+
+<body>
+	<center>
+		<div id="content_container">
+			<div id="header">
+				<%= render :partial => 'site/header' %>
+			</div>
+			<div id="content_wrapper">
+				<div id="content">
+					<div id="sidebar">
+						<%= render :partial => 'site/sidebar' %>
+						<%= yield :sidebar %>
+					</div>
+					<div id="main">
+						<div id="flash_message">
+							<%= render :partial => 'site/flash' %>
+						</div>
+						<%= yield :layout %>
+					</div>
+				</div>
+			</div>
+			<div class="spacer"></div>
+		</div>
+		<div id="footer">
+			<%= render :partial => 'site/footer'%>
+		</div>	
+	</center>
+</body>
+</html>

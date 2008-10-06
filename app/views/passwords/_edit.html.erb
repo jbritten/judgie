@@ -1,0 +1,26 @@
+<div class="form_container">
+	<%= error_messages_for :user %>
+
+	<% form_for(:user, :url => user_password_path(@user), :html => { :method => :put }) do |f| %>
+		<fieldset>
+			<div class="form_row">
+				<label for="password">Old password</label>
+				<%= password_field_tag :old_password %>
+			</div>
+
+			<div class="form_row">
+				<label for="password">New password</label>
+				<%= f.password_field :password %>
+			</div>
+
+			<div class="form_row">
+				<label for="password_confirmation">Retype the new password</label>
+				<%= f.password_field :password_confirmation %>
+			</div>
+
+			<div class="submit_row">
+				<%= f.submit "Update", :class => "submit" %> or <%= link_to 'Cancel', home_path %>
+			</div>
+		</fieldset>
+	<% end %>
+</div>

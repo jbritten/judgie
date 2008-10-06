@@ -1,0 +1,6 @@
+<% flash_message = display_flash_message %>
+<% if not flash_message.nil? %>
+	<div class="error_message">
+		<%=h display_flash_message %>
+	</div>
+<% end %>

@@ -1,0 +1,9 @@
+<% if @questions.empty? %>
+	<h1>Holy smokes!  You have answered all of the questions.</h1>
+<% else %>
+	<%= render :partial => 'questions/question', :collection => @questions %>
+
+	<div id="q_pagination">
+		<%= will_paginate @questions %>
+	</div>
+<% end %>

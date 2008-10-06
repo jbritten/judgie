@@ -1,0 +1,9 @@
+if flash[:sidebar].empty?
+  page.hide 'forgot_password_form'
+  page.replace_html 'signin_message', "Check your email.  Your new password should be waiting for you."
+  page.show 'signin_message'
+  page.show 'signin_form'
+else
+  page.replace_html 'signin_message', flash[:sidebar]
+  page.show 'signin_message'
+end

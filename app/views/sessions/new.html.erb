@@ -1,0 +1,24 @@
+<div class="form_container">
+	<% form_tag session_path do -%>
+		<fieldset>
+			<div class="form_row">
+				<label for="login">Username</label>
+				<%= text_field_tag 'login' %>
+			</div>
+
+			<div class="form_row">
+				<label for="password">Password</label>
+				<%= text_field_tag 'password' %>
+			</div>
+	
+			<div class="form_row">
+				<%= check_box_tag 'remember_me', value = "1", checked = false, :class => "checkbox" %>
+				<label for="remember_me" class="checkbox">Remember me</label>
+			</div>
+
+			<div class="submit_row">
+				<%= submit_tag 'Sign in', :class => "submit" %> or <%= link_to 'Cancel', home_path %>
+			</div>
+		</fieldset>
+	<% end -%>
+</div>

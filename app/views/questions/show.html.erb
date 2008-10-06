@@ -1,0 +1,43 @@
+<div class="question" id="<%= dom_id(@question) -%>">
+	<h1><%=h @question.the_question %></h1>
+	<p>
+		asked by 
+			<% if @question.anonymous? %>
+				somebody
+			<% else %>
+				<%= link_to h("#{@question.user.login}"), user_path(@question.user) %>
+			<% end %>
+			<%= formatted_time(@question.created_at) %>
+	</p>
+</div>
+<div>
+	<h2>
+		Overall
+	</h2>
+	<p>
+		<%= pluralize(@question.replies_count, 'person') -%> answered this question<br>
+	</p>
+	<%= image_tag @question.chart_responses.to_url %>
+	<hr/>
+</div>
+<div>
+	<h2>
+		Battle of the sexes
+	</h2>
+	<div style="float:left">
+		<%= image_tag @question.chart_gender_2.to_url %>
+	</div>
+	<div style="float: left; clear: left">
+		<h3 style="text-align: center">
+			Girls
+		</h3>
+		<%= image_tag @question.chart_women.to_url %>
+	</div>
+	<div style="float: left">
+		<h3 style="text-align: center">
+			Guys
+		</h3>
+		<%= image_tag @question.chart_men.to_url %>
+	</div>
+	<br style="clear: left"/>
+</div>

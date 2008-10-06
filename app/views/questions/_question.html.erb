@@ -1,0 +1,65 @@
+<% # TODO: This needs to be optimized %>
+<% reply = question.replies.find(:first, :select => 'id, yes', :conditions => ['user_id = ?', current_user]) %>
+<div class="question" id="<%= dom_id(question) -%>">
+	<h1><%=h question.the_question %></h1>
+	<p>
+		asked by 
+			<% if question.anonymous? %>
+				somebody
+			<% else %>
+				<%= link_to h("#{question.user.login}"), user_path(question.user) %>
+			<% end %>
+			<%= formatted_time(question.created_at) %>
+	</p>
+
+	<div class="vote">
+		<% if logged_in? %>
+			<% if reply %>
+				<div class="spacer"></div>
+				<p style="float:right;">
+					You answered <em><%= reply.yes? ? "YES" : "NO" -%></em>.
+				</p>
+				<div style="float: right; margin-left: 20px">
+					<% remote_form_for(:reply, :url => question_reply_path(question, reply), 
+											   :html => {:method => :put}) do |f| %>
+						<%= f.hidden_field :yes, :value => reply.yes? ? Reply::Response::No : Reply::Response::Yes %>
+						<%= submit_tag "Change to #{reply.yes? ? "NO" : "YES"}", :class => "submit-reply" %>
+					<% end %>
+				</div>
+			<% else %>
+				<div style="float: right; margin-left: 20px">
+					<% remote_form_for(:reply, :url => question_replies_path(question)) do |f| %>
+						<%= f.hidden_field :yes, :value => Reply::Response::No %>
+						<%= submit_tag "NO", :class => "submit-reply", :onclick => "remove_answered_question(\'#{dom_id(question)}\');" %>
+					<% end %>
+				</div>
+				<div style="float: right;">
+					<% remote_form_for(:reply, :url => question_replies_path(question)) do |f| %>
+						<%= f.hidden_field :yes, :value => Reply::Response::Yes %>
+						<%= submit_tag "YES", :class => "submit-reply", :onclick => "remove_answered_question(\'#{dom_id(question)}\');" %>
+					<% end %>
+				</div>
+				<div class="spacer"></div>
+			<% end %>
+		<% else %>
+			<div style="float: right;">
+				<p>Sign in to vote!</p>
+			</div>
+		<% end %>
+	</div>
+
+	<% if reply %>
+		<% percent_yes = question.percentage_yes %>
+		<% chart = GoogleChart.pie_150x50(["#{percent_yes}% yes", percent_yes],["#{100-percent_yes}% no", 100-percent_yes]) %>
+		<% chart.colors = ['BCDEA5', 'E6F9BC'] %>
+		<%= image_tag chart.to_url, :style => 'float: left', :size => '150x50' %>
+		<p>
+			<%= pluralize(question.replies_count, "person") -%> answered this question.<br/>
+			<%= link_to "See more statistics", question_path(question) %>
+		</p>
+	<% end %>
+	
+	<div class="spacer"></div>
+</div>
+
+<div style="clear: left;"></div>

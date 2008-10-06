@@ -1,0 +1,129 @@
+<div class="pod" id="signin_or_stats">
+	<% if logged_in? %>
+		<h1>
+			Hi, <%= current_user.login %>!
+		</h1>
+		<div style="font-size: 0.9em">
+			<%= link_to 'Edit Profile', edit_user_path(current_user) %>
+			| <%= link_to 'Sign out', signout_path, :method => :delete %>
+		</div>
+
+		<%= render :partial => 'users/stats', :locals => {:user => current_user} %>
+	<% else %>
+		<div id ="signin_message" class="alert">
+			<%= flash[:signin_message] %>
+		</div>
+		<div id="signin_or_signup">
+			<div id="signin_form">
+				<h1>
+					Hi there, stranger.
+				</h1>
+				<p>
+					Why don't you tell us who you are?
+				</p>
+				<div class="form_container">
+					<% form_tag session_path, :class => "loginform" do -%>
+						<fieldset>
+							<div class="form_row">
+								<label for="login">Username</label><br/>
+								<%= text_field_tag 'login' %>
+							</div>
+
+							<div class="form_row">
+								<label for="password">Password (<%= link_to_function 'I forgot it', "Element.hide('signin_form'); Element.show('forgot_password_form')" %>)</label><br/>
+								<%= password_field_tag 'password' %>
+							</div>
+
+							<div class="form_row">
+								<br/>
+								<%= check_box_tag 'remember_me', value = "1", checked = false, :class => "checkbox" %>
+								<label for="remember_me" class="checkbox">Remember me</label>
+							</div>
+
+							<div class="submit_row">
+								<%= submit_tag 'Sign in', :class => "button-to" %>
+							</div>
+						</fieldset>
+					<% end -%>
+				</div>
+			</div>
+			<div id="forgot_password_form" style="display: none;">
+				<h1>
+					Lost your password?
+				</h1>
+				<p>
+					Don't worry.  Just tell us a bit about yourself and we'll send you a new one.
+				</p>
+				<div class="form_container">
+					<% form_remote_for(:password, :url => passwords_path) do |f| %>
+						<fieldset>
+							<div class="form_row">
+								<label for="login">Username</label><br/>
+								<%= text_field_tag 'login' %>
+							</div>
+
+							<div class="form_row">
+								<label for="email">Email</label><br/>
+								<%= text_field_tag 'email' %>
+							</div>
+
+							<div class="submit_row">
+								<%= submit_tag 'Get it', :class => "button-to" %> &nbsp;&nbsp; <%= link_to_function 'I remember it!', "Element.hide('forgot_password_form'); Element.hide('signin_message'); Element.show('signin_form')" %>
+							</div>
+						</fieldset>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+<% if not logged_in? %>
+	<div class="pod">
+		<h1>
+			New around here?
+		</h1>
+		<p>
+			Start answering questions, or asking your own by signing up.
+		</p>
+		<p>
+			Judgie is fun.  It's addictive.  It's free.  What are you waiting for?
+		</p>
+		<%= button_to 'Signup now!', signup_path %>
+		<%= button_to 'Learn more', about_path %>
+	</div>
+<% end %>
+
+<div class="pod">
+	<h3>
+		What's on your mind?
+	</h3>
+	<% if logged_in? %>
+		<%= button_to 'Ask a question', new_question_path %>
+	<% else %>
+		<%= button_to_function "Ask a question", "Element.show('signin_to_ask');", :class => "button" %>
+		<div id="signin_to_ask" class="alert" style="display: none;">
+			<p>
+				Look up!  You've got to Sign in or Sign up to ask a question.
+			</p>
+		</div>
+	<% end %>
+</div>
+
+<div class="pod">
+	<h3>Find Questions</h3>
+	<div class="form_container">
+		<% form_tag search_questions_path, :method => :get do %>
+			<fieldset>
+				<div class="form_row">
+					<%= text_field_tag 'query' %>
+				</div>
+
+				<div class="submit_row">
+					<%= submit_tag 'Search', :class => "button-to" %>
+				</div>
+			</fieldset>
+		<% end %>
+	</div>
+</div>
+

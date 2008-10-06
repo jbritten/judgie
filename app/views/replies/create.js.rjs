@@ -1,0 +1,2 @@
+page.replace dom_id(@question), :partial => 'questions/question', :locals => {:question => @question}
+page.replace_html dom_id(current_user, 'stats'), :partial => 'users/stats', :locals => {:user => current_user}

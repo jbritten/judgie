@@ -1,0 +1,10 @@
+*.log
+log/*
+db/schema.rb
+db/schema.sql
+.DS_Store
+tmp/*
+sphinx/*
+config/ultrasphinx/development.conf
+config/ultrasphinx/test.conf
+config/ultrasphinx/production.conf

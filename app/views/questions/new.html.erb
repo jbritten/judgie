@@ -1,0 +1,36 @@
+<%= error_messages_for :question %>
+
+<div class="form_container">
+	<% form_for(@question) do |f| %>
+		<fieldset>
+			<div class="form_row">
+				<label for="the_question">What's your question?</label><br/>
+				<%= f.text_area :the_question, :class => "question", :onkeyup => "UpdateCharCount(this, event);" %>
+			</div>
+
+			<div class="form_row">
+				Don't be long winded.  You've got&nbsp;
+				<span id="question_character_counter">
+					120
+				</span>
+				&nbsp;characters left before we interrupt you.
+			</div>
+
+			<div class="form_row">
+				<%= f.check_box :anonymous, :class => "checkbox" %>
+				<label for="anonymous" class="checkbox">Post your question anonymously?</label>
+			</div>
+
+			<div class="submit_row">
+				<%= f.submit "Ask", :class => "submit" %> or <%= link_to "Cancel", home_path %>
+			</div>
+		</fieldset>
+	<% end %>
+</div>
+
+<script>
+	function UpdateCharCount(cell, event) {
+		var value = cell.value;
+		$('question_character_counter').innerHTML = 120 - value.length;
+	}
+</script>

@@ -1,0 +1,20 @@
+<div id="<%= dom_id(user, 'stats') -%>">
+	<div class="head">
+		Your Activity
+	</div>
+	<ul>
+		<li>
+			<span class="label">
+				<%= link_to "Questions", user_path(user) %>
+			</span>
+			<%= user.stat.question_count %>
+		</li>
+
+		<li>
+			<span class="label">
+				<%= link_to "Replies", user_replies_path(user) %>
+			</span>
+			<%= user.stat.reply_count %>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,7 @@
+<ul>
+	<li><%= link_to 'Home', home_path %></li>
+	<li><%= link_to 'Signup', signup_path unless logged_in? %></li>
+	<li><%= link_to('Privacy', privacy_path, :target => '_blank') %></li>
+	<li><%= link_to('Terms', terms_path, :target => '_blank') %></li>
+	<li><%= link_to 'About', about_path %></li>
+</ul>

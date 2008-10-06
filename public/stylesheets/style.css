@@ -1,0 +1,552 @@
+/*
+	Copyright (c) 2008  Compulsivo, Inc.
+*/
+
+*
+{
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #BCDEA5 none repeat scroll 0%;
+	color: #574951;
+	margin: 0pt;
+	padding: 0pt 20px;
+	text-align: center;
+}
+
+body, td, th, textarea, input, select, h1, h2, h3, h4, h5, h6 {
+	font-family: "Lucida Grande",Verdana,Helvetica,sans-serif;
+	font-size: 13px;
+	font-size-adjust: none;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: 1.2;
+}
+
+h1 {
+	font-size: 1.5em;
+}
+
+h2 {
+	font-size: 1.4em;
+}
+
+h3 {
+	font-size: 1.3em;
+}
+
+p {
+	padding: 5px 0px;
+}
+
+hr {
+	height: 1px;
+	color: #BCDEA5;
+	background-color: #BCDEA5;
+	border: 0px;
+	margin: 7px 0px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+	color: #574951;
+	cursor: pointer;
+	outline-color: invert !important;
+	outline-style: none !important;
+	outline-width: medium !important;
+}
+
+a:visited {
+	color: #666;
+}
+
+a:hover, a:focus {
+	color: #000;
+}
+
+a:active {
+	color: #000000;
+}
+
+.spacer {
+	height: 0;
+	clear: both;
+}
+
+/*******************************
+	BODY
+ *******************************/
+
+#content_container
+{
+/*	min-width: 700px;*/
+	max-width: 900px;
+	/* IE comatibility */
+/*	width: expression(document.body.clientWidth < 700 ? "700px" : (document.body.clientWidth > 900 ? "900px" : (document.body.clientWidth + "px")));*/
+	/* end IE compatibility */
+	background-color: white;
+	text-align: left;
+}
+
+#content_wrapper {
+	background: #FFFFFF
+	clear: both;
+	margin-top: 7px;
+	padding: 0pt 15px 30px 0pt;
+}
+
+#content {
+	/*background:transparent url(/img/main-back.gif) no-repeat scroll 0pt;*/
+	min-height: 400px;
+	padding:15px 0pt 0pt 15px;
+}
+
+#sidebar {
+	clear: left;
+	float: right;
+	margin: 0pt 0pt 2em;
+	min-height: 500px;
+	width: 250px;
+}
+
+#main {
+	margin-right: 280px;
+}
+
+#header { 
+	position: relative; 
+	height: 50px;
+	text-align: left;
+	overflow: hidden;
+	margin: 0px;
+	padding: 5px 10px 0px 30px;
+}
+
+/*******************************
+	SIDEBAR
+ *******************************/
+
+.pod {
+	background-color: #E6F9BC; 
+	border: 1px dotted #83988E;
+	margin: 10px 5px;
+	padding: 10px 5px;
+}
+
+.pod p {
+	padding: 8px 0px;
+}
+
+.pod .alert {
+	text-align: center;
+	background-color: yellow;
+	padding: 0px;
+}
+
+.pod .head {
+	border-bottom: 1px solid #83988E;
+	margin: 8px 0;
+}
+
+.pod ul {
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+}
+
+.pod li {
+	text-align:right;
+}
+
+.pod li .label {
+	float: left;
+}
+
+.pod li .label a {
+	text-decoration: none;
+}
+
+/*******************************
+	QUESTIONS
+ *******************************/
+
+.question {
+	margin: 2px 0px;
+	padding: 2px;
+	float: left;
+	width: 100%;
+	border-bottom: 1px dotted #83988E;
+}
+
+.question h1 {
+	color: #574951;
+}
+
+.question p {
+	color: #574951;
+	font-size: .9em;
+	padding: 5px 2px;
+}
+
+.question .quick_stats {
+	float: left;
+	clear: left;
+	padding: 2px;
+	width: 100px;
+}
+
+.question .vote {
+	float: right; 
+	width: 30%; 
+	text-align: left;
+	padding-top: 5px;
+}
+
+.progressbar {
+	color: black;
+	font-size: 0.8em;
+	width: 100px;
+	margin-bottom: 0.5em;
+}
+
+.progressbar .border {
+	background: transparent;
+	border: 1px solid #BCDEA5;
+	width: 100px; 
+	height: 10px;
+}
+
+.progressbar .fill {
+	position: absolute;
+	background: #E6F9BC;
+	height: 10px;
+}
+
+.progressbar .percentage {
+	line-height: 10px; 
+	margin: 0px; 
+	padding: 0px
+}
+
+.progressbar .text {
+	position: absolute;
+	text-align: center;
+	vertical-align: center;
+	width: 100px; 
+	height: 10px;
+}
+
+
+/*******************************
+	ERRORS & PAGINATION
+ *******************************/
+
+#errorExplanation, .error_message {
+	 width: 80%;
+	 border: 1px solid #83988E;
+	 padding: 7px;
+	 padding-bottom: 12px;
+	 margin-bottom: 20px;
+	 background-color: #E6F9BC;
+}
+
+#errorExplanation p, .error_message p {
+	 margin-bottom: 0;
+	 padding: 10px 0px;
+}
+
+#errorExplanation ul li {
+	margin: 0;
+	padding: 0;
+	list-style-image: none;
+	list-style-type: none;
+}
+
+div.progressBar {
+	margin: 5px;
+}
+
+div.progressBar div.border {
+	 background-color: #fff;
+	 border: 1px solid gray;
+	 width: 100%;
+}
+
+div.progressBar div.background {
+	 background-color: #333;
+	 height: 18px;
+	 width: 0%;
+}
+
+.pagination {
+	 padding: 3px;
+	 margin: 15px 3px 3px 3px;
+}
+
+.pagination a {
+	 padding: 2px 5px 2px 5px;
+	 margin: 2px;
+	 border: 1px solid #83988E;
+	 text-decoration: none;
+	 color: #83988E;
+}
+
+.pagination a:hover, .pagination a:active {
+	 border: 1px solid #83988E;
+	 color: #000;
+}
+
+.pagination span.current {
+	 padding: 2px 5px 2px 5px;
+	 margin: 2px;
+	 border: 1px solid #83988E;
+	 font-weight: bold;
+	 background-color: #83988E;
+	 color: #FFF;
+}
+
+.pagination span.disabled {
+	 padding: 2px 5px 2px 5px;
+	 margin: 2px;
+	 border: 1px solid #83988E;
+	 color: #83988E;
+}
+
+/*******************************
+	FORMS
+ *******************************/
+
+form {
+	clear: left;
+	margin: 0pt;
+}
+
+fieldset {
+	border: 1px solid #83988E;
+	padding: 5px;
+}
+
+.form_container {
+}
+
+.form_container form fieldset {
+	border: 0pt none;
+	color: #574951;
+	font-weight: bold;
+	text-align: left;
+}
+
+.form_container .form_row {
+	clear: left;
+	min-height: 40px;
+	text-align: left;
+}
+
+.form_container .submit_row {
+	clear: left;
+	min-height: 30px;
+}
+
+.form_container .form_row .subtext {
+	clear: left;
+	text-align: left;
+	margin-left: 180px;
+	font-weight: normal;
+	font-size: 0.9em;
+	padding-bottom: 10px;
+}
+
+.form_container form label {
+	clear: left;
+	float: left;
+	width: 180px;
+}
+
+.loginform label {
+	width: 100% !important;
+}
+
+.form_container form input, .form_container form select {
+	clear: right;
+	float: left;
+	font-size: 1em;
+	height: 1.4em;
+	margin: 0pt 0.5em 0pt 0pt;
+	border: 1px solid #83988E;
+}
+
+.form_container form select {
+	min-width: 60px;
+}
+
+.form_container form label.checkbox {
+	clear: right;
+	float: left;
+	width: 90% !important;
+}
+
+.form_container form input.checkbox {
+	height: 1em !important;
+	width: 1em !important;
+}
+
+.form_container form textarea.question {
+	height: 4em;
+	width: 30em;
+	padding: 0;
+	font-size: 1em;
+	margin: 0px 0.5em 0.5em 0px;
+	border: 1px solid #83988E;
+}
+
+.form_container form input.submit {
+	color: #333333;
+	font-size: 1em !important;
+	height: 2em;
+	padding: 0pt 1em;
+}
+
+.form_container form input.button-to, .button-to input, .button {
+	background-color: #83988E;
+	border: 1px solid #574951;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-size: 1em !important;
+	font-weight: bold;
+	margin: 3px 0px;
+	height: 2em;
+	padding: 0pt 1em;
+}
+
+.submit-reply {
+	background-color: #83988E;
+	border: 1px solid #574951;
+	color: #E6F9BC;
+	cursor: pointer;
+	font-size: 1em !important;
+	font-weight: bold;
+	margin: 3px 0px;
+	height: 2em;
+	padding: 0pt 1em;
+}
+
+/*******************************
+	LEGAL
+ *******************************/
+
+.legal {
+	padding: 5px 20px 20px 20px;
+}
+
+.legal p
+{
+	padding: 8px;
+}
+
+.legal h1,
+.legal h2
+{
+	color: #574951;
+	padding-top: 15px;
+	padding-bottom: 10px;
+}
+
+.legal ol, .legal ul {
+	margin-left: 40px;
+}
+
+.legal ol li {
+	padding: 1px;
+	list-style-type: decimal;
+}
+
+.legal ul li {
+	padding: 1px;
+	list-style-type: disc;
+}
+
+/*******************************
+	ABOUT & CONTACT
+ *******************************/
+
+#about {
+	margin: 5px 0px;
+	width: 70%;
+}
+
+#about ul {
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: decimal;
+	margin-left: 2em;
+}
+
+#about li {
+	padding: 10px 0px;
+	font-size: 1.3em;
+}
+
+#contact_us {
+	width: 70%;
+	margin-top: 5px;	
+}
+
+/*******************************
+	FOOTER
+ *******************************/
+
+#footer {
+	color: black; 
+	clear: both; 
+	font-size: 11px; 
+	padding: 5px 0px; 
+	text-align: center;
+	min-height: 100px;
+	min-width: 700px;
+	max-width: 900px;
+	/* IE comatibility */
+	width: expression(document.body.clientWidth < 700 ? "700px" : (document.body.clientWidth > 900 ? "900px" : (document.body.clientWidth + "px")));
+	/* end IE compatibility */
+}
+
+#footer a { 
+	color: #574951; 
+}
+
+#footer ul {
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	margin: 0pt;
+	padding: 0pt;
+}
+
+#footer ul li {
+	display: inline;
+}
+
+#footer li a {
+	color: #574951;
+	font-size: 100%;
+	font-weight: bold;
+	padding: 3px 5px;
+}
+
+#footer a:hover {
+	text-decoration: underline;
+}
+
+#footer p {
+	font-size: 95%;
+	margin-top: 2px;
+	color: #574951; 
+}

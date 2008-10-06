@@ -1,0 +1,19 @@
+# If you'd like to use the s3 rake tasks (rake -T s3) then configure the following:
+
+development:
+  bucket_name: 
+  access_key_id: 
+  secret_access_key: 
+  persistent: false
+
+test:
+  bucket_name: 
+  access_key_id: 
+  secret_access_key: 
+  persistent: false
+
+production:
+  bucket_name: 
+  access_key_id: 
+  secret_access_key: 
+  persistent: false

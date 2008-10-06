@@ -1,0 +1,49 @@
+Judgie runs on Ruby on Rails, so first you need to get Rails running. Go download rails (http://rubyonrails.org/down) and follow it's instructions to get Rails running.  The directions in this README file assume some knowledge of Rails.
+
+
+Detailed Instructions:
+
+
+Setup the databases (only MysQL has been used/tested):
+
+1. Edit config/database.yml to reflect the database names and passwords you would like to use.
+2. rake db:create:all
+3. rake db:migrate
+
+
+Setup default values:
+
+4. Edit config/environment.rb and change the config.action_controller.session data
+5. Edit config/environment.rb and set reCaptcha keys ENV['RECAPTCHA_PUBLIC_KEY'] and ENV['RECAPTCHA_PRIVATE_KEY'] after obtaining keys from http://recaptcha.net/
+6. Edit config/environment.rb and set ExceptionNotifier recipient and sender email variables
+7. Edit config/environments/development.rb and production.rb to suit your tastes.
+8. Edit public/404.html, public/500.html, app/views/account_mailer/*
+9. Edit style.css to suite your tastes.
+10. Edit app/views/site/terms_of_service.html.erb and app/views/site/privacy_policy.html.erb
+
+
+Install Sphinx:
+
+11. Download Sphinx from http://sphinxsearch.com/downloads/sphinx-0.9.8.tar.gz
+12. tar -zxvf sphinx-0.9.8.tar.gz
+13. cd sphinx-0.9.8.tar
+14. ./configure
+15. make
+16. sudo make install
+
+
+Configure Ultrasphinx:
+
+17. Configure, perform initial index, and start Sphinx daemon with "rake ultrasphinx:bootstrap"
+18. Use "rake -T ultrasphinx" to see a full list of available Ultrasphinx commands
+
+
+Start Judgie:
+
+19. ./script/server
+20. Go to the home page http://localhost:3000
+21. Go to the signup page and create an account.
+
+
+Judgie is Copyright 2008 Compulsivo, Inc.
+Released under the MIT License

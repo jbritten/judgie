@@ -1,0 +1,33 @@
+<div class="form_container">
+	<%= error_messages_for :user %>
+
+	<% form_for(:user, :url => user_path(@user), :html => { :method => :put }) do |f| %>
+		<fieldset>
+			<div class="form_row">
+				<label for="login">Pick a username</label>
+				<%= f.text_field :login %>
+			</div>
+
+			<div class="form_row">
+				<label for="email">What's your email?</label>
+				<%= f.text_field :email %>
+			</div>
+
+			<div class="form_row">
+				<label for="gender">You are a</label>
+				<%= f.select(:gender, User::GENDER) %>
+			</div>
+
+			<div class="form_row">
+				<label for="birthdate">Your birthday is</label>
+				<%= select_month(@user.birthdate.month, :field_name => "birth_month") %> 
+				<%= select_day(@user.birthdate.day, :field_name => "birth_day") %> 
+				<%= select_year(@user.birthdate.year, :start_year => Date.today.year-12, :end_year => Date.today.year-100, :field_name => "birth_year") %>
+			</div>
+
+			<div class="submit_row">
+				<%= f.submit "Update", :class => "submit" %> or <%= link_to 'Cancel', home_path %>
+			</div>
+		</fieldset>
+	<% end %>
+</div>

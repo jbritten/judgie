@@ -1,0 +1,11 @@
+<div style="margin-bottom: 10px; border-bottom: 2px dotted #83988E; padding: 5px;">
+	<h1>All Questions You've Answered ...</h1>
+</div>
+
+<% if @questions.empty? %>
+	<h1>You haven't replied to any questions.  Why not?</h1>
+<% else %>
+	<%= render :partial => 'questions/question', :collection => @questions %>
+
+	<%= will_paginate @questions %>
+<% end %>
